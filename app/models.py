@@ -33,6 +33,17 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password_guess)
 
 
+    def to_dict(self):
+        user_dict = {
+            "id": self.id,
+            "email": self.email,
+            "username": self.username,
+            "password": self.password,
+            "date_created": self.date_created
+        }
+        return user_dict
+
+
 @login.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
