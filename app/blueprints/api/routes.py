@@ -33,3 +33,6 @@ def create_user():
     print(email, username, password)
     new_user = User(email=email, username=username, password=password)
     return jsonify(new_user.to_dict()), 201
+
+
+    
